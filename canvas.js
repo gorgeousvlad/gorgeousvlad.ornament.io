@@ -1,17 +1,26 @@
 window.onload = 
 	function(){
-		var outer = document.createElement("div");
-		document.body.appendChild(outer);
-		var canvas = document.createElement("canvas");
-		outer.appendChild(canvas);
-		canvas.width = 500;
-		canvas.height = 500;
+		
 		var dims = {
 		"sim":20,
 		"x2":30,
 		"x4":40
 		}
-		drawPic(canvas,"white","magenta",dims)
+		
+		for (var j = 0; j < 2;j++){
+			var line = document.createElement("div");
+			document.body.appendChild(line)
+			for(var i = 0;i < 3 ;i++){
+				var outer = document.createElement("div");
+				outer.style.display = "inline-block";
+				line.appendChild(outer);
+				var canvas = document.createElement("canvas");
+				outer.appendChild(canvas);
+				canvas.width = 500;
+				canvas.height = 500;
+				drawPic(canvas,"white","magenta",dims)
+			}
+		}
 	};
 
 	
