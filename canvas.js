@@ -9,10 +9,11 @@ window.onload =
 		
 		for (var j = 0; j < 2;j++){
 			var line = document.createElement("div");
+			line.id = "line"
 			document.body.appendChild(line)
 			for(var i = 0;i < 3 ;i++){
 				var outer = document.createElement("div");
-				outer.style.display = "inline-block";
+				//outer.style.display = "inline-block";
 				line.appendChild(outer);
 				var canvas = document.createElement("canvas");
 				outer.appendChild(canvas);
