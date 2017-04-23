@@ -18,7 +18,7 @@ window.onload =
 				outer.appendChild(canvas);
 				canvas.width = 500;
 				canvas.height = 500;
-				drawPic(canvas,"white","magenta",dims)
+				drawPic(canvas,"white","midnightblue",dims)
 			}
 		}
 	};
