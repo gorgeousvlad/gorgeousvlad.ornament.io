@@ -34,23 +34,17 @@ function drawPic(canvas,color,backColor,dims){
 		context.fillRect(0, 0, 500, 500);
 		
 		for (var i =0; i< 5; i++){ 
+
 		context.lineWidth = 5
-		context.beginPath();
-		context.arc(canvas.width/2,canvas.height/2,50*(i+1),0,Math.PI*2);
-		context.stroke();
-		context.closePath();
+		drawCircle(context,canvas.width/2,canvas.height/2,50*(i+1));
 		}
 
 		context.lineWidth = 2
 		for (var i =0; i< 50; i++){
+
 			context.strokeRect(i*dims.sim/2,i*dims.sim/2,dims.sim/2,dims.sim/2)
 			context.strokeRect(canvas.width - i*dims.sim/2 - dims.sim/2,i*dims.sim/2,dims.sim/2,dims.sim/2)
-	
-			context.beginPath();
-			context.arc(canvas.width/2,i*dims.sim,dims.sim/2,0,Math.PI*2);
-			context.stroke();
-			context.closePath();
-
+			drawCircle(context,canvas.width/2,i*dims.sim,dims.sim/2);
 			drawTriangle(context,i*dims.x4 - i*dims.x4/2,dims.x4*2 + 10,dims.x4)
 			drawTriangle(context,i*dims.x4 - i*dims.x4/2,canvas.height - dims.x4*2,dims.x4)
 			drawTriangle(context, i*dims.sim/2,i*dims.sim/2-70,dims.sim)
@@ -61,37 +55,24 @@ function drawPic(canvas,color,backColor,dims){
 			
 
 			if (i%2){
+
 				context.beginPath();
 				context.arc(canvas.width/2,i*dims.sim,dims.x2,0,Math.PI*2);
 				context.stroke();
 				context.closePath();
-				context.beginPath();
-				context.arc(i*dims.sim,canvas.height/2,dims.x2,0,Math.PI*2);
-				context.stroke();
-				context.closePath();
-
+				drawCircle(context,i*dims.sim,canvas.height/2,dims.x2);
 				context.strokeRect(i*10,i*10,dims.x2,dims.x2)
 				context.strokeRect(canvas.width - i*10 - dims.x2,i*10,dims.x2,dims.x2)
 			}
 
 			if (i%4){
-				context.beginPath();
-				context.arc(canvas.width/2,i*dims.sim,dims.x4,0,Math.PI*2);
-				context.stroke();
-				context.closePath();
-				context.beginPath();
-				context.arc(i*dims.sim,canvas.height/2,dims.x4,0,Math.PI*2);
-				context.stroke();
-				context.closePath();
 
+				drawCircle(context,canvas.width/2,i*dims.sim,dims.x4);
+				drawCircle(context,i*dims.sim,canvas.height/2,dims.x4);
 				context.strokeRect(i*10,i*10,dims.x4,dims.x4)
 				context.strokeRect(canvas.width - i*10 - dims.x4,i*10,dims.x4,dims.x4)
 			}
-
-			context.beginPath();
-			context.arc(i*dims.sim,canvas.height/2,10,0,Math.PI*2);
-			context.stroke();
-			context.closePath();
+			drawCircle(context,i*dims.sim,canvas.height/2,10);
 		}
 
 			
@@ -104,5 +85,11 @@ function drawTriangle(context,x,y,side){
 			context.lineTo(x + side,y)
 			context.closePath();
 			context.stroke()
+}
 
+function drawCircle(context,x,y,rad){
+	context.beginPath();
+	context.arc(x,y,rad,0,Math.PI*2);
+	context.stroke();
+	context.closePath();
 }
